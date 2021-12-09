@@ -1,0 +1,50 @@
+@use 'src/styles/vars';
+
+.currencies {
+  background-color: vars.$lightColor;
+  color: vars.$primaryColor;
+
+  &__title {
+    font-weight: bold;
+    padding: 0.8rem 0.5rem;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    color: #321005;
+    border: none;
+    background-color: #ededed;
+  }
+
+  &__list {
+    max-height: 250px;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      border-left: 1px solid lightgrey;
+      background-color: vars.$lightColor;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: vars.$primaryColor;
+    }
+   
+    &__item {
+      padding: 0.8rem 0.5rem;
+      border-top: 1px solid lightgrey;
+      transition: background-color 1s;
+      cursor: pointer;
+
+      &:hover {
+        transition-duration: 0.2s;
+        background-color: vars.$altColor;
+      }
+    }
+  }
+}
