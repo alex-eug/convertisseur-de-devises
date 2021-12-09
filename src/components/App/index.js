@@ -50,10 +50,7 @@ class App extends React.Component {
   }
 
   handleToggleClick() {
-    // pour changer une valeur dans le state
-    // on doit utiliser setState
-    // on n 'a pas le droit de modifier directement la valeur
-    // a travers this.state
+    
     this.setState({
       // on inverse la valeur avec !
       isCurrenciesListOpen: !this.state.isCurrenciesListOpen,
@@ -61,8 +58,7 @@ class App extends React.Component {
   }
 
   handleBaseAmountChange(event) {
-    // ici, je vais changer le montant de base, en fonction
-    // de la saisie dans le champ controlé
+    
     this.setState({
       baseAmount: Number(event.target.value),
     });
@@ -82,57 +78,43 @@ class App extends React.Component {
   }
 
   getFilteredCurrencies() {
-    // objectif : filtrer les devises, selon la valeur de this.state.searchValue
-
-    // si pas de recherche, on renvoie la liste telle quelle
+  
     if (this.state.searchValue === '') {
       return currenciesList;
     }
-    // sinon, c'est parti pour le filtrage :)
-
-    // on met la recherche en minuscule pour ignorer la case
+    
     const loweredSearch = this.state.searchValue.toLowerCase();
 
     const filteredCurrencies = currenciesList.filter((currency) => {
-      // on met la devise en minuscule pour ignorer la casse
+     
       const loweredCaseCurrency = currency.name.toLowerCase();
 
-      // on regarde si le nom de la devise en minuscule contient la recherche en minuscule aussi
+    
       return loweredCaseCurrency.includes(loweredSearch);
     });
 
-    // enfin, on renvoie la liste filtrée
+  
     return filteredCurrencies;
   }
 
   computeResult() {
-    // il faut qu'on trouve le taux de conversion
-    // qui correspond a la devise selectionnée dans selectedCurrency
-    // une fois que l'on a ce taux, on va le multiplier par le montant a convertir (baseAmount)
-
-    // et ainsi, on obtiendra le montant converti, que l'on pourra renvoyer
-
-    // 1er probleme => trouver le bon taux
-    // find prend en parametre un callback
+  
     const foundCurrency = currenciesList.find((currency) => {
-      // dans le callback, je dois renvoyer true pour dire que je veux garder cet élément
-      // ok mais je veux garder quel element ?
-      // celui qui a le même nom que this.state.selectedCurrency
+      
       return currency.name === this.state.selectedCurrency;
     });
 
     const conversionRate = foundCurrency.rate;
-    // 2eme probleme => faire le calcul
+    
     const result = conversionRate * this.state.baseAmount;
 
-    // on renvoie
+    
     return result;
   }
 
-  // dans la classe, on met une méthode render
   render() {
     console.log('App -- render');
-    // dedans, on va juste retourner notre JSX, comme on faisait dans la fonction avant
+    
     return (
       <div className="app">
         <Header
@@ -160,5 +142,5 @@ class App extends React.Component {
   }
 }
 
-// ca change rien a l'export. juste on exporte une classe au lieu d'une fonction
+
 export default App;
