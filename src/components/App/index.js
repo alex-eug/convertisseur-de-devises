@@ -14,21 +14,14 @@ import currenciesList from 'src/data/currencies';
 
 import './app.scss';
 
-// la classe App (composant) hérite de React.Component
-// et du coup cette fois ci, on n'échappera pas a l'import de React
-// eslint-disable-next-line react/prefer-stateless-function
+
 class App extends React.Component {
-  // le constructeur est appelé a la creation de la classe (donc du composant App)
-  // ce constructeur prend en parametre des props
+
   constructor(props) {
-    // le constructeur "remonte" les props au parent
-    // c'est a dire React.Component
+
     super(props);
 
-    // ici, on va déclarer notre état
-    // notre état est un objet
-    // dans lequel on va définir des clés/valeurs
-    // ici, on définit les valeurs initiales du state
+
     this.state = {
       isCurrenciesListOpen: true,
       baseAmount: 1,
@@ -36,31 +29,21 @@ class App extends React.Component {
       searchValue: '',
     };
 
-    // bind permet qu'une fonction "parte" avec son contexte
-    // c'est a dire que si elle se trouve dans un état "détaché"
-    // par exemple si on la donne a un onClick
-    // elle saura quand même retrouver son contexte
+
     this.handleToggleClick = this.handleToggleClick.bind(this);
     this.handleCurrencyClick = this.handleCurrencyClick.bind(this);
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleBaseAmountChange = this.handleBaseAmountChange.bind(this);
   }
 
-  // "mon composant a été monté"
-  // "mon composant a été inséré dans le DOM"
-  // après le premier rendu quoi
+
   componentDidMount() {
     document.title = `Conversion de euro vers ${this.state.selectedCurrency}`;
   }
 
-  // "mon composant a été mis a jour"
-  // "un nouveau rendu a eu lieu"
-  // mais pas le rendu initial du coup !
-  // didUpdate prend en param (optionnels) les anciennes props, et l'ancien state
+
   componentDidUpdate(prevProps, prevState) {
-    // ici, après chaque nouveau rendu, nous allons modifier le titre de la page
-    // en fonction de la devise selectionnée
-    // on veut changer le titre du document, que si la devise a changé !
+
     if (prevState.selectedCurrency !== this.state.selectedCurrency) {
       document.title = `Conversion de euro vers ${this.state.selectedCurrency}`;
     }

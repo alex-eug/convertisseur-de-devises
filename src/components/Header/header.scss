@@ -5,12 +5,15 @@
   color: vars.$lightColor;
   text-align: center;
   padding: 2rem;
+  border-radius: 25px  25px 0 0;
 
   &__input {
     padding: 0.5rem;
     margin-top: 1rem;
     font-size: 1.1rem;
     width: 80%;
+    border-radius: 20px;
+    
     
     border: 4px solid vars.$altColor;
     color: vars.$primaryColor;

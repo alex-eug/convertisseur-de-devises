@@ -7,7 +7,7 @@ const Toggler = ({ isCurrenciesListOpen, onButtonClick }) => (
     type="button"
     onClick={onButtonClick}
   >
-    =
+    ^
   </button>
 );
 
