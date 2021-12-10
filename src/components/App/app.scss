@@ -28,3 +28,10 @@
     transform: rotate(90deg);
   }
 }
+
+@media (max-width:850px){
+  .app {
+    width: 90%;
+    margin: 2rem auto;
+  }
+}
